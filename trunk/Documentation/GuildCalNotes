@@ -1,0 +1,121 @@
+Couple of key concepts: 
+---------------------------- 
+1. Handle multiple toons for a single user 
+2. Provide the ability to limit class counts for a specific event 
+3. Provide the ability to define minimum regent supplies 
+4. Provide the ability to pre-assign toons 
+5. Provide the ability to pre-assign blacklists 
+6. Define event roles 
+7. Provide different calendar views 
+8. Provide the ability to send out status and event emails 
+
+Tables 
+-------- 
+Users - Table of defined system users 
+
+Id - Unique Id 
+Name - name of the user for the site 
+Email - Validated email address for notifications 
+SecurityLevel - Administrator, Event Editor, User, etc... 
+Password - What it says 
+
+User-Toon - One-to-Many to connect toons to users 
+
+Id - Unique Id 
+Name - Name of the toon 
+Class Id - Class Id of the toon 
+Level - Level of the toon 
+Guild Id - Guild Id the toon belongs to 
+Icon Image Id - Icon image to use for toon 
+
+Events - Defined calendar events 
+
+Id - Unique Id 
+Name - Name of the event that the users see 
+Type - Birthday, Holiday, Raid, Group, Anouncement, etc... 
+Instance - Probably needs it's own table 
+Meet Location - Location for guild to group at 
+Meet Time - Time meet up will begin 
+Description - Description of event 
+Date - Date event will start 
+Start Time - Time event will start 
+End Time - Time vent will stop 
+Lowest Level - Lowest toon level accepted (0 = all) 
+Highest Level - Highest toon level accepted (0 = all) 
+Limits - Class based limits (One-to-Many Table) 
+Guilds - Accepted guilds for event (One-to-Many Table) 
+Limit Guilds - Limit specific guilds defined in lookup table 
+Toons - User lookup (One-to-Many Table) 
+Regents - Required regents (One-to-Many Table) 
+Icon Image Id - Image to use for event 
+Class Limit Level - Hard Limits, Soft Limits, No Limits 
+
+Event-Limit - Class counts required for event 
+
+Event Id - Unique Event Id 
+Class Id - Unique Class Id 
+Min Count - Minimum number of toons for this class for event 
+Max Count - Maximum number of toons for this class for event 
+
+Event-Guild - Limit guilds that can participate 
+
+Event Id - Unique Event Id 
+Guild Id - Unique Guild Id 
+Member Count Min - minimum number of toons from this guild for event 
+Member Count Max - maximum num of toons form this guild for event 
+
+Event-Toon - Toons assigned to event 
+
+Event Id - Unique Event Id 
+Toon Id - Unique Toon Id 
+Status - Status of user (Pending, Assigned, Standby, Wont Attend, Blackout, Pre-Assigned) 
+Role - Assigned role of user (Raid Leader, SK Manager, MT, OT, Heal Lead, etc...) 
+
+Events-Regent - Required regents for event 
+
+Event Id - Unique Event Id 
+Regent Id - Unique Regent Id 
+Min Count - Minimum regents required 
+
+Class - Class types available in the game 
+
+Id - Unique Id 
+Class Name - Name of class 
+Icon Image Id - Image to use for this class 
+
+Guilds - Guilds that can be used for events 
+
+Id - Unique Id 
+Guild Name - Name of guild 
+Icon Image Id - Icon to use for guild 
+
+Regents - Regents available in the game 
+
+Id - Unique Id 
+Regent Name - Name of regent 
+Icon Image Id Icon to use for regent 
+
+Icon Image - List of images that have been defined with the system 
+
+Id - Unique Id 
+Name - Name for the image 
+URL - Complete URL for image file 
+
+
+Primary Functionality Screens 
+
+- Calendar View (Year, Month, Week) 
+- Add/Edit/Delete Event 
+- Add/Edit/Delete User 
+- Add/Edit/Delete Toon 
+- Add/Edit/Delete Class 
+- Add/Edit/Delete Guild 
+- Add/Edit/Delete Regent 
+- Add/Edit/Delete Icon Image 
+- Event Reporting/Export/Import 
+
+
+Possible in-game LUA AddOn 
+
+- Import Calendar Export XML 
+- Export existing Group/Raid to Calendar XML
